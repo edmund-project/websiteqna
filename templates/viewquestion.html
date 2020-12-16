@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="content">
+      <h3>{{ question.question_title }}</h3>
+      <p>{{ question.question_detail|safe }}</p>
+      <p class="questiondetails"><span style="float: left">Posted On <strong>{{ question.date_posted }}</strong></span><span style="float: right">Posted By <strong>{{ question.posted_by }}</strong></span></p>
+      <div id="answers" style="padding-top: 20px;">
+      {% for answer in answers %}
+               <p>{{ answer.answer_detail|safe }}</p>
+              <p class="answerdetails"><span style="float: left">Posted On <strong>{{ answer.date_posted }}</strong></span><span style="float: right">Posted By <strong>{{ answer.posted_by }}</strong></span></p>
+      {% endfor %}
+      </div>
+    <form action="" method="post"> 
+      {% csrf_token %}
+      {% if user.is_authenticated %}
+        <div class="form-group">
+            <textarea class="form-control "name="answer" id="answer" cols="30" rows="10" placeholder="What's your answer?..." required></textarea>
+        </div>
+        <div>
+            <label for="posted_by">Posted By:</label>
+            <input type="text" class="form-control" id="posted_by" name="posted_by" value="" autocomplete="off" placeholder="Enter your username...." required>
+        </div>
+        <div>
+            <input type="hidden" id="qid" name="qid" value="{{ question.qid }}">
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3" name="answer_question" id="answer_question">Answer</button>
+      {% else %} 
+        <p style="padding-top: 40px;"> Please SIGN IN  first to answer this question!</p> 
+      {% endif %}   
+        {% if error %}
+          <p class="error">{{ error }}</p>
+        {% endif %}
+    </form>  
+  </div>
+  
+        
+
+
+{% endblock %}

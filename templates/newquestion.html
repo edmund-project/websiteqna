@@ -1,0 +1,33 @@
+{% extends "base.html"%}
+{% block content %}
+<h4> ASK QUESTION! </h4>
+
+<div>
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <div class="alert alert-success">{{  message }}</div>
+      {% endif%}
+    {% endfor %}
+</div>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input class="form-control" id="title" name="title" placeholder="title....." required>
+    </div>
+    <div>
+        <label for="posted_by">Post By:</label>
+        <input class="form-control" id="posted_by" name="posted_by" placeholder="Enter Your Username Here...." required>
+    </div>
+    <div>
+        <label for="detail" class="mt-3">Detail:</label>
+        <textarea class="form-control" name="detail" id="detail" cols="30" rows="10" placeholder="detail....." required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+
+</form>
+
+{% endblock %}

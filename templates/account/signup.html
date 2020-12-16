@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h4>SIGN UP!</h4>
+<P class="text-muted">already have an account? then please <a href="/login">sign in</a>.</P>
+
+<div>
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <div class="alert alert-success">{{  message }}</div>
+      {% endif%}
+    {% endfor %}
+</div>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+    {{ form|crispy }}
+
+    <button class="btn btn-primary" type="submit">sign up</button>
+
+</form>    
+
+
+
+{% endblock %}

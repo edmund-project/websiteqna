@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="content">
+    {% for question in questions %}
+       <div class="question">
+          <a href="/question/{{ question.qid }}/{{ question.slug }}"><h5>{{ question.question_title }}</h5></a>
+       </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
