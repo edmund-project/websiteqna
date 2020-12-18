@@ -8,6 +8,6 @@
   - frendy(2031025)
   - gabrielle andrea castillinov runtu(2031051)
   - riscky andriandi(2031052)
-  - steven justino(2031031)
+  - steven justino(2031030)
 6. year = 2020
 
